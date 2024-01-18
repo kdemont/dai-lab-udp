@@ -45,4 +45,9 @@ public class Musician {
                 return "";
         }
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + ": {uuid: " + uuid + ", instrument: " + instrument + ", sound : " + sound + "}";
+    }
 }
