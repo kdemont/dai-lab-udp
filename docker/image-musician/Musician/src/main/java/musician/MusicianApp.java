@@ -16,7 +16,7 @@ public class MusicianApp {
             System.exit(1);
         }
 
-        String instrument = args[0];
+        Instrument instrument = Instrument.valueOf(args[0]);
         Musician musician = new Musician(instrument);
 
         Timer timer = new Timer();

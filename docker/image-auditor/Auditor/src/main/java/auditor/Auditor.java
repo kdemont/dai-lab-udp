@@ -48,6 +48,7 @@ public class Auditor {
         Musician musician = gson.fromJson(jsonData, Musician.class);
 
         System.out.println(musician);
+        //System.out.println(activeMusicians);
 
         ActiveMusician activeMusician = new ActiveMusician();
         activeMusician.setUuid(musician.getUuid());
