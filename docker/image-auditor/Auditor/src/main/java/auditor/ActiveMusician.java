@@ -1,7 +1,5 @@
 package auditor;
 
-import java.util.UUID;
-
 public class ActiveMusician extends Musician {
     private long lastActivity;
 
@@ -9,7 +7,7 @@ public class ActiveMusician extends Musician {
         super();
     }
 
-    public ActiveMusician(UUID uuid, Instrument instrument, long lastActivity) {
+    public ActiveMusician(Instrument instrument, long lastActivity) {
         super(instrument);
         this.lastActivity = lastActivity;
     }

@@ -36,6 +36,7 @@ public class Auditor {
 
                     String jsonData = new String(packet.getData(), 0, packet.getLength());
                     processUdpMessage(jsonData);
+
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -47,7 +48,7 @@ public class Auditor {
         Gson gson = new Gson();
         Musician musician = gson.fromJson(jsonData, Musician.class);
 
-        System.out.println(musician);
+        //System.out.println(musician);
         //System.out.println(activeMusicians);
 
         ActiveMusician activeMusician = new ActiveMusician();
