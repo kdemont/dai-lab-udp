@@ -1,11 +1,13 @@
 package auditor;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import java.io.IOException;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Auditor {
     private static final String MULTICAST_ADDRESS = "239.255.22.5";
@@ -46,15 +48,21 @@ public class Auditor {
 
     private void processUdpMessage(String jsonData) {
         Gson gson = new Gson();
-        Musician musician = gson.fromJson(jsonData, Musician.class);
+        JsonObject json = gson.fromJson(jsonData, JsonObject.class);
 
-        //System.out.println(musician);
-        //System.out.println(activeMusicians);
+        UUID uuid = UUID.fromString(json.get("uuid").getAsString());
+        String sound = json.get("sound").getAsString();
+
+        // Determine the instrument based on the sound
+        Instrument instrument = Instrument.fromSound(sound);
 
         ActiveMusician activeMusician = new ActiveMusician();
-        activeMusician.setUuid(musician.getUuid());
-        activeMusician.setInstrument(musician.getInstrument());
+        activeMusician.setUuid(uuid);
+        activeMusician.setInstrument(instrument);
         activeMusician.setLastActivity(System.currentTimeMillis());
+
+        System.out.println(activeMusician);
+        //System.out.println(activeMusicians);
 
         updateActiveMusicians(activeMusician);
     }

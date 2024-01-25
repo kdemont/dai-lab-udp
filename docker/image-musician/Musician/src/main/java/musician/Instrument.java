@@ -16,4 +16,13 @@ public enum Instrument {
     public String getSound() {
         return sound;
     }
+
+    public static Instrument fromSound(String sound) {
+        for (Instrument instrument : Instrument.values()) {
+            if (instrument.sound.equals(sound)) {
+                return instrument;
+            }
+        }
+        return null;
+    }
 }
